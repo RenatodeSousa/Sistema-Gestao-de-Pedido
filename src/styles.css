@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 10; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/*-------- Table-------------------*/
+.mat-form-field {
+    width: 100%;
+  }
+  
+  .mat-footer-row{
+    max-width: 100%;
+  }
+  .mat-header-row{
+    background-color: rgba(133, 5, 5, 0.89);
+    min-width: 100%;
+  }
+  .mat-row {
+    min-width: 100%;
+  }
+
+  /*-------- FiM-------------------*/

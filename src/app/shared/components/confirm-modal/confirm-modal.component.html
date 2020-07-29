@@ -1,0 +1,25 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">{{ title }}</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>{{ message }}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="onConfirm()">{{ confirmTxt }}</button>
+    <button type="button" class="btn btn-danger" (click)="onClose()">{{ cancelTxt }}</button>
+  </div>
+</div>
+
+<h2 mat-dialog-title>Tem certeza que deseja exclulir ?</h2>
+<mat-dialog-content class="mat-typography">  
+   <h2>{{data.nome}}</h2> 
+   <h2>{{data.email}}</h2> 
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial class="btn btn-danger">Delete</button>
+</mat-dialog-actions>

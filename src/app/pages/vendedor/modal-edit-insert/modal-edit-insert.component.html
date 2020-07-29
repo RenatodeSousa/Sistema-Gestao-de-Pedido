@@ -1,0 +1,47 @@
+<!--CONTEUDO DA JANELA MODAL DE INSERIR E EDITAR -->
+<div id="modalEdit" class="modal fade" role="dialog" data-backdrop="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{vendedor.nome}} </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Nome</label>
+          <input type="text" class="form-control" (input)="this.vendedor.nome = $event.target.value"
+            aria-describedby="emailHelp" value="{{this.vendedor.nome}}" placeholder="Seu nome" required />
+
+        </div>
+
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email</label>
+          <input type="email" class="form-control" (input)="this.vendedor = $event.target.value"
+            value="{{vendedor.email}}" aria-describedby="emailHelp" placeholder="Seu email" required />
+
+        </div>
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input type="text" class="form-control" (input)="this.senha = $event.target.value" value="{{senha}}"
+            placeholder="Senha" required />
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <!-- <button *ngIf="vendedor === 'undefined' " type="button" class="btn btn-primary" (click)="cadastrar()">Salvar</button>-->
+        <button *ngIf="vendedor !== 'undefined' " type="button" class="btn btn-primary"
+          (click)="editar()">Editar</button>
+
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+<!--CONTEUDO DA JANELA MODAL DE INSERIR E EDITAR -->
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title">
+      {{title}}
+    </h5>
+    <mat-icon mat-button mat-dialog-close>cancel</mat-icon>
+  </div>
+
+  <div class="modal-body ">
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Titulo
+          </mat-panel-title>
+          <mat-panel-description>
+            Cliente
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <form [formGroup]="resourceForm" id="resourceForm" (submit)="submitForm()">
+
+          <div class="card">
+            <div class="card-header">
+              Informações sobre Vendedores do Sistema
+            </div>
+            <div class="card-body">
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <mat-form-field>
+                    <mat-label for="nome">Nome</mat-label>
+                    <input matInput type="text" id="nome" formControlName="nome">
+                  </mat-form-field>
+                  <app-form-field-error [controlName]="resourceForm.get('nome')"></app-form-field-error>
+                </div>
+                <div class="form-group col-md-3">
+                  <mat-form-field>
+                    <mat-label for="Email">E-mail</mat-label>
+                    <input matInput type="text" id="email" formControlName="email">
+                  </mat-form-field>
+                  <app-form-field-error [controlName]="resourceForm.get('email')"></app-form-field-error>
+                </div>
+                <div class="form-group col-md-3">
+                  <mat-form-field>
+                    <mat-label for="tipoFisicoJuridico">Tipo de Pessoa:</mat-label>
+                    <mat-select disableRipple id="tipoFisicoJuridico" formControlName="tipoFisicoJuridico"
+                      placeholder="Selecione">
+                      <mat-option value='F'>Física</mat-option>
+                      <mat-option value='J'>Jurídica</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <app-form-field-error [controlName]="resourceForm.get('tipoFisicoJuridico')">
+                  </app-form-field-error>
+                </div>
+                <div class="form-group col-md-3">
+                  <mat-form-field>
+                    <mat-label for="cpfOuCnpj">CPF ou CNPJ</mat-label>
+                    <input matInput id="cpfOuCnpj" mask="000.000.000-00||00.000.000/0000-00"
+                      formControlName="cpfOuCnpj">
+                  </mat-form-field>
+                  <app-form-field-error [controlName]="resourceForm.get('cpfOuCnpj')"></app-form-field-error>
+                </div>
+
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-4 ">
+                  <div [formArrayName]="'telefones'">
+                    <mat-label>Lista de Telefones:</mat-label>
+                 <mat-icon  (click)="insertItem()" class="green-icon">add_circle_outline</mat-icon> 
+                    <div  class="scrollbar scrollbar-danger">
+                      
+                     <div *ngFor="let t of  resourceForm.controls.telefones.controls; let i = index"
+                       [formGroupName]="i" >
+                       <mat-form-field>
+                        <mat-label>Fone:</mat-label>
+                       <input matInput id="{{t.tel}}" formControlName="tel" [value]="t">
+                       <mat-icon (click)="removeItem(i)" color="warn"  matSuffix>delete_outline</mat-icon>
+                       </mat-form-field>
+                  </div>
+                
+                  </div>
+                  </div>
+                </div>
+
+
+                <div class="form-group col-md-4 datepicker-align">
+                  <mat-form-field>
+                    <mat-label>Data de nascimento</mat-label>
+                    <input matInput formControlName="dataNascimento" [matDatepicker]="dataNascimento">
+                    <mat-datepicker-toggle matSuffix [for]="dataNascimento"></mat-datepicker-toggle>
+                    <mat-datepicker #dataNascimento></mat-datepicker>
+                  </mat-form-field>
+                  <app-form-field-error [controlName]="resourceForm.get('dataNascimento')"></app-form-field-error>
+                </div>
+              </div>
+            </div>
+          </div>
+          <app-server-error-messages [serverErrorMessages]="serverErrorMessages"></app-server-error-messages>
+          <mat-dialog-actions align="end">
+            <div class="modal-footer">
+              <button *ngIf="data === undefined" type="submit" class="btn btn-primary"
+                [disabled]="submittingForm || resourceForm.invalid" mat-button [mat-dialog-close]="true">
+                Salvar
+              </button>
+              <button *ngIf="data !== undefined" type="submit" class="btn btn-primary" mat-button
+                [mat-dialog-close]="true" [disabled]="submittingForm || resourceForm.invalid">
+                Editar
+              </button>
+              <button mat-button mat-dialog-close class="btn btn-dark">Fechar</button>
+            </div>
+          </mat-dialog-actions>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

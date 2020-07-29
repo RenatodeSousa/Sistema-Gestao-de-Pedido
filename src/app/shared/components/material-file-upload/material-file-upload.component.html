@@ -1,0 +1,8 @@
+    <div class="form-group">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="file "  [(ngModel)] ="file"   (change)="onFileChange($event)"  accept=".jpg">
+        <label class="custom-file-label" for="fileArquivo"></label>
+      </div>
+
+    </div>
+    <img [src]="imageSrc" *ngIf="imageSrc" style="height: 150px; width:150px">

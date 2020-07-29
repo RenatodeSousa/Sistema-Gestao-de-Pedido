@@ -1,0 +1,53 @@
+<mat-toolbar *ngIf="localUser !== null" class="dark bg-dark text-white">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <h1>Gerenciamente de Pedidos</h1>
+
+    <div>
+      <a mat-button [routerLink]="'/reports'"> Relatórios </a>
+      <a mat-button [routerLink]="'/entries'"> Lançamentos </a>
+      <a mat-button [routerLink]="'/categorias'"> Categorias </a>
+      <a mat-button [routerLink]="'/vendedores/'">Vendedores </a>
+      <a mat-button [routerLink]="'/clientes'">Clientes </a>
+
+    </div>
+    
+    <span class="example-spacer"></span>
+    <div>
+      <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="true">
+        <img  [src]="profileImage" class="rounded-circle z-depth-0"  style="height: 50px; width:50px" >
+      </a>
+      <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-55">
+        <mat-nav-list>
+          <a mat-list-item [routerLink]="'/reports'"> Relatórios </a>
+          <a mat-list-item [routerLink]="'/vendedores/profile'">Perfil</a>
+          <a mat-list-item (click)="logOut()">LogOut</a>
+        </mat-nav-list>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="'/reports'"> Relatórios </a>
+      <a mat-list-item [routerLink]="'/entries'"> Lançamentos </a>
+      <a mat-list-item [routerLink]="'/categorias'"> Categorias </a>
+      <a mat-list-item [routerLink]="'/vendedores'">Vendedores </a>
+      <a mat-list-item [routerLink]="'/clientes'">Clientes </a>
+      <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<app-footer></app-footer>

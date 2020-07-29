@@ -1,0 +1,62 @@
+<app-bread-crumb [items]="[{text: 'clientes'}]"></app-bread-crumb>
+
+<app-page-header pageTitle="Clientes" buttonText="Novo Cliente" matIcon="add_circle_outline"
+(click)=" openDialogEditCreate(element)">
+</app-page-header>
+
+
+<mat-form-field>
+  <div class="col-md-12 text-right">
+    <mat-label>Filtrar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Pesquisar">
+  </div>
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="table table-striped ml-2" matSort>
+
+  <!-- Position Column -->
+
+  <ng-container matColumnDef="id">
+    <th *matHeaderCellDef mat-sort-header> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="nome">
+    <th *matHeaderCellDef mat-sort-header> Nome </th>
+    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="email">
+    <th *matHeaderCellDef mat-sort-header> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="telefone">
+    <th *matHeaderCellDef mat-sort-header>Telefone </th>
+    <mat-select mat-cell disableRipple *matCellDef="let element" placeholder="Visualizar Lista">
+      <mat-option *ngFor="let tel of element.telefones" value='{{tel}}'>{{tel | mask: '(00) 000-0000'}}</mat-option>
+    </mat-select>
+  </ng-container>
+
+  <ng-container matColumnDef="statusCliente">
+    <th *matHeaderCellDef mat-sort-header> Status Cliente </th>
+    <td mat-cell *matCellDef="let element"> {{element.statusUsuario}} </td>
+  </ng-container>
+  <ng-container matColumnDef="acao">
+    <th *matHeaderCellDef> Ações </th>
+    <td mat-cell *matCellDef="let element">
+      <mat-icon color="primary" (click)=" openDialogEditCreate(element)">edit
+      </mat-icon>
+      <mat-icon (click)="openDialog(element)" color="warn">delete_outline</mat-icon>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+
+<app-server-error-messages [serverErrorMessages]="serverErrorMessages"></app-server-error-messages>

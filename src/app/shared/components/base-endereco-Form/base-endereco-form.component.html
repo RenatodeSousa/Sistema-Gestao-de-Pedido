@@ -1,0 +1,53 @@
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <mat-form-field>
+            <mat-label>Cep:</mat-label>
+            <input matInput id="{{t.cep}}" formControlName="cep" [value]="t.cep">
+        </mat-form-field>
+    </div>
+    <div class="form-group col-md-4">
+        <mat-form-field>
+            <mat-label>Lorgradouro:</mat-label>
+            <input matInput id="{{t.logradouro}}" formControlName="logradouro" [value]="t.logradouro">
+        </mat-form-field>
+    </div>
+    <div class="form-group col-md-4">
+        <mat-form-field>
+            <mat-label>Complemento:</mat-label>
+            <input matInput id="{{t.complemento}}" formControlName="complemento" [value]="t.complemento">
+        </mat-form-field>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-4">
+        <mat-form-field>
+            <mat-label>bairro:</mat-label>
+            <input matInput id="{{t.bairro}}" formControlName="bairro" [value]="t.bairro">
+        </mat-form-field>
+    </div>
+    <div class="form-group col-md-4">
+        <mat-form-field>
+            <mat-label>localidade:</mat-label>
+            <input matInput id="{{t.localidade}}" formControlName="localidade" [value]="t.localidade">
+        </mat-form-field>
+    </div>
+    <div class="form-group col-md-1">
+        <mat-form-field>
+            <mat-label>UF:</mat-label>
+            <input matInput id="{{t.uf}}" formControlName="uf" [value]="t.uf">
+        </mat-form-field>
+    </div>
+    <div class="form-group col-md-2">
+        <mat-form-field>
+            <mat-label>IBGE:</mat-label>
+            <input matInput id="{{t.ibge}}" formControlName="ibge" [value]="t.ibge">
+        </mat-form-field>
+    </div>
+    <div class="form-group col-md-1">
+        <mat-form-field>
+            <mat-label>GIA:</mat-label>
+            <input matInput id="{{t.gia}}" formControlName="gia" [value]="t.gia">
+        </mat-form-field>
+    </div>
+
+<mat-icon (click)="removeItem(i)" color="warn" matSuffix>delete_outline</mat-icon>

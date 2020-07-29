@@ -1,0 +1,10 @@
+.content {
+  height: 88vh;
+  margin:05%;
+  margin-top: 20px;
+
+}
+
+.example-spacer {
+  flex: auto ;
+}

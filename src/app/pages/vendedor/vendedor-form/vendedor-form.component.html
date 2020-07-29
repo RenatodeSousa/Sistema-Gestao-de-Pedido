@@ -1,0 +1,203 @@
+<app-bread-crumb [items]="[{text: 'Vendedor', link: '/vendedores'}, {text: pageTitle}]"></app-bread-crumb>
+<app-page-header [pageTitle]="pageTitle" buttonText="Voltar" buttonLink="/vendedores" matIcon="arrow_back">
+</app-page-header>
+
+<mat-accordion>
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Cadastro de vendedor
+      </mat-panel-title>
+      <mat-panel-description>
+        Vendedor
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <form [formGroup]="resourceForm" id="resourceForm" (submit)="submitForm()">
+
+      <div class="card">
+        <div class="card-header">
+
+          Informações sobre Vendedores do Sistema
+
+        </div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <img *ngIf="!imageSrc" src="{{bucketUrl}}/vend{{resource.id}}.jpg"  class="circle" style="height: 50px; width:50px">
+              <img [src]="imageSrc"   class="circle" *ngIf="imageSrc" style="height: 50px; width:50px">
+              <div class="form-group">
+                <div class="custom-file" id="customFile">
+                  <input type="file" class="custom-file-input" id="file" formControlName="file"
+                    (change)="onFileChange($event)" accept=".jpg">
+                  <label class="custom-file-label" for="file" data-browse="Selecionar Foto">{{fileName}}
+                    <mat-icon>file_upload</mat-icon>
+                  </label>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="form-group col-md-3">
+              <mat-form-field>
+                <mat-label for="nome">Nome</mat-label>
+                <input matInput type="text" id="nome" formControlName="nome">
+              </mat-form-field>
+              <app-form-field-error [controlName]="resourceForm.get('nome')"></app-form-field-error>
+            </div>
+            <div class="form-group col-md-3">
+              <mat-form-field>
+                <mat-label for="Email">E-mail</mat-label>
+                <input matInput type="text" id="email" formControlName="email">
+              </mat-form-field>
+              <app-form-field-error [controlName]="resourceForm.get('email')"></app-form-field-error>
+            </div>
+            <div class="form-group col-md-3">
+              <mat-form-field>
+                <mat-label for="tipoFisicoJuridico">Tipo de Pessoa:</mat-label>
+                <mat-select disableRipple id="tipoFisicoJuridico" formControlName="tipoFisicoJuridico"
+                  placeholder="Selecione">
+                  <mat-option value='F'>Física</mat-option>
+                  <mat-option value='J'>Jurídica</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <app-form-field-error [controlName]="resourceForm.get('tipoFisicoJuridico')"></app-form-field-error>
+            </div>
+            <div class="form-group col-md-3">
+              <mat-form-field>
+                <mat-label for="cpfOuCnpj">CPF ou CNPJ</mat-label>
+                <input matInput id="cpfOuCnpj" [showMaskTyped]="true" [dropSpecialCharacters]="false"
+                  mask="000.000.000-00||00.000.000/0000-00" formControlName="cpfOuCnpj">
+              </mat-form-field>
+              <app-form-field-error [controlName]="resourceForm.get('cpfOuCnpj')"></app-form-field-error>
+            </div>
+
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <mat-form-field>
+                <mat-label for="senha">Senha</mat-label>
+                <input matInput type="password" id="senha" formControlName="senha" placeholder="Senha">
+              </mat-form-field>
+            </div>
+            <div class="form-group col-md-3 ">
+              <div [formArrayName]="'telefones'">
+                <mat-label>Lista de Telefones:</mat-label>
+                <mat-icon (click)="addTelefones()" class="green-icon">add_circle_outline</mat-icon>
+                <div class="scrollbar scrollbar-danger">
+                  <div *ngFor="let t of  resourceForm.controls.telefones.controls; let i = index" [formGroupName]="i">
+                    {{i}}
+                    <mat-form-field>
+                      <mat-label>Fone:</mat-label>
+                      <input matInput id="{{t.tel}}" formControlName="tel" [value]="t">
+                      <mat-icon (click)="removeTelefones(i)" color="warn" matSuffix>delete_outline</mat-icon>
+                    </mat-form-field>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-md-2">
+              <mat-form-field>
+                <mat-label>Data de nascimento</mat-label>
+                <input matInput formControlName="dataNascimento" [matDatepicker]="dataNascimento">
+                <mat-datepicker-toggle matSuffix [for]="dataNascimento"></mat-datepicker-toggle>
+                <mat-datepicker #dataNascimento></mat-datepicker>
+              </mat-form-field>
+              <app-form-field-error [controlName]="resourceForm.get('dataNascimento')"></app-form-field-error>
+
+            </div>
+
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              Dados sobre Endereço
+            </div>
+            <div class="card-body">
+
+              <div class="form-group col-md-12">
+                <div [formArrayName]="'enderecos'">
+                  <div *ngFor="let t of  resourceForm.controls.enderecos.controls; let i = index" [formGroupName]="i">
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <mat-form-field>
+                          <mat-label>Cep:</mat-label>
+                          <input matInput id="{{t.cep}}" mask="00000-000" [showMaskTyped]="true"
+                            [dropSpecialCharacters]="false" formControlName="cep" [value]="t.cep">
+                        </mat-form-field>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <mat-form-field>
+                          <mat-label>Lorgradouro:</mat-label>
+                          <input matInput id="{{t.logradouro}}" formControlName="logradouro" [value]="t.logradouro">
+                        </mat-form-field>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <mat-form-field>
+                          <mat-label>Complemento:</mat-label>
+                          <input matInput id="{{t.complemento}}" formControlName="complemento" [value]="t.complemento">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <mat-form-field>
+                          <mat-label>Numero:</mat-label>
+                          <input matInput type="number" id="{{t.numero}}" formControlName="numero" [value]="t.numero">
+                        </mat-form-field>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <mat-form-field>
+                          <mat-label>bairro:</mat-label>
+                          <input matInput id="{{t.bairro}}" formControlName="bairro" [value]="t.bairro">
+                        </mat-form-field>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <mat-form-field>
+                          <mat-label>localidade:</mat-label>
+                          <input matInput id="{{t.localidade}}" formControlName="localidade" [value]="t.localidade">
+                        </mat-form-field>
+                      </div>
+                      <div class="form-group col-md-1">
+                        <mat-form-field>
+                          <mat-label>UF:</mat-label>
+                          <input matInput id="{{t.uf}}" formControlName="uf" [value]="t.uf">
+                        </mat-form-field>
+                      </div>
+                      <div class="form-group col-md-2">
+                        <mat-form-field>
+                          <mat-label>IBGE:</mat-label>
+                          <input matInput id="{{t.ibge}}" formControlName="ibge" [value]="t.ibge">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <mat-icon (click)="removeEnderecos(i)" color="warn" matSuffix>delete_outline</mat-icon>
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-server-error-messages [serverErrorMessages]="serverErrorMessages"></app-server-error-messages>
+      <button type="submit" class="btn btn-primary btn-lg float-right mt-3"
+        [disabled]="submittingForm || resourceForm.invalid">
+        Salvar
+      </button>
+
+    </form>
+    <div class="form-group col-md-4">
+      <mat-label>Digite o CEP para pesquisa de endereço:</mat-label>
+      <mat-form-field>
+        <mat-label for="cep">cep</mat-label>
+        <input matInput type="number" [(ngModel)]="cep" id="cep">
+        <mat-icon color="warn" (click)=" pesquisarCep(cep)" matSuffix>search
+        </mat-icon>
+      </mat-form-field>
+    </div>
+
+  </mat-expansion-panel>
+</mat-accordion>
