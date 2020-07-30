@@ -1,10 +1,10 @@
-import { NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { ConfirmModalComponent } from '../shared/components/confirm-modal/confirm-modal.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
@@ -18,6 +18,8 @@ import { FooterComponent } from './components/template/footer/footer.component';
 import { BaseEnderecoFormComponent } from '../shared/components/base-endereco-Form/base-endereco-form.component';
 import { ImageUtilService } from '../shared/components/material-file-upload/image-util.service';
 import { ErrorInterceptorProvider } from './config/interceptors/error-interceptor';
+import { AuthService } from './config/services/auth.service';
+import { AuthGuardService } from './config/guard/auth-guard.service';
 
 
 
@@ -36,8 +38,8 @@ import { ErrorInterceptorProvider } from './config/interceptors/error-intercepto
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
-   // NgxMaskModule.forRoot(),
-   // HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase),
+    // NgxMaskModule.forRoot(),
+    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase),
     ToastrModule.forRoot({
       timeOut: 5000,
       positionClass: 'toast-top-full-width',
@@ -67,7 +69,13 @@ import { ErrorInterceptorProvider } from './config/interceptors/error-intercepto
     ConfirmModalComponent,
 
   ],
-  providers: [AuthInterceptorProvider, StorageService, BaseEnderecoFormComponent, ImageUtilService, ErrorInterceptorProvider ],
+  providers: [AuthInterceptorProvider,
+    StorageService,
+    BaseEnderecoFormComponent,
+    ImageUtilService,
+    ErrorInterceptorProvider,
+    AuthService,
+    AuthGuardService],
 })
 
 export class CoreModule { }
