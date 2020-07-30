@@ -17,6 +17,7 @@ import { NavComponent } from './components/template/nav/nav.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { BaseEnderecoFormComponent } from '../shared/components/base-endereco-Form/base-endereco-form.component';
 import { ImageUtilService } from '../shared/components/material-file-upload/image-util.service';
+import { ErrorInterceptorProvider } from './config/interceptors/error-interceptor';
 
 
 
@@ -66,7 +67,7 @@ import { ImageUtilService } from '../shared/components/material-file-upload/imag
     ConfirmModalComponent,
 
   ],
-  providers: [AuthInterceptorProvider, StorageService, BaseEnderecoFormComponent, ImageUtilService ],
+  providers: [AuthInterceptorProvider, StorageService, BaseEnderecoFormComponent, ImageUtilService, ErrorInterceptorProvider ],
 })
 
 export class CoreModule { }

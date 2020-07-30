@@ -11,6 +11,7 @@ export class Endereco extends BaseResourceModel {
       public unidade?: string,
       public ibge?: string,
       public gia?: string,
+      public numero?: string,
     ) {
       super();
     }

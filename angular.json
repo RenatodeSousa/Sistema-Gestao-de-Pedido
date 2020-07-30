@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "GEstao de Pedidos": {
+    "Gestao-de-Pedidos": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",

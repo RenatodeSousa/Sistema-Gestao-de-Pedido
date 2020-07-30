@@ -21,6 +21,12 @@
 <div class="form-row">
     <div class="form-group col-md-4">
         <mat-form-field>
+            <mat-label>Numero:</mat-label>
+            <input matInput id="{{t.numero}}" formControlName="numero" [value]="t.numero">
+        </mat-form-field>
+    </div>
+    <div class="form-group col-md-4">
+        <mat-form-field>
             <mat-label>bairro:</mat-label>
             <input matInput id="{{t.bairro}}" formControlName="bairro" [value]="t.bairro">
         </mat-form-field>

@@ -27,7 +27,7 @@ export class BaseEnderecoFormComponent implements OnInit {
       cep: [endereco.cep, Validators.required],
       logradouro: [endereco.logradouro, Validators.required],
       complemento: [endereco.complemento],
-      numero: [endereco.complemento, Validators.required],
+      numero: [endereco.numero, Validators.required],
       bairro: [endereco.bairro, Validators.required],
       localidade: [endereco.localidade, Validators.required],
       uf: [endereco.uf, Validators.required],

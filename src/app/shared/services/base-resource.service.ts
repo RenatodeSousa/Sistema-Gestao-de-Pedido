@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpRequest, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { Injector } from '@angular/core';
 import { Observable, throwError, of } from 'rxjs';
-import { catchError, map, last, tap, retry } from 'rxjs/operators';
+import { catchError, map, retry } from 'rxjs/operators';
 import { BaseResourceModel } from '../models/base-resource.model';
 import { StorageService } from 'src/app/core/config/storage.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
