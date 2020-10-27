@@ -6,6 +6,7 @@ import { VendedorService } from 'src/app/pages/vendedor/shared/service/vendedor.
 import { Vendedor } from 'src/app/pages/vendedor/shared/vendedor.model';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/config/services/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -23,6 +24,7 @@ export class NavComponent implements OnInit {
   private vendedor: Vendedor;
   private localUser;
   constructor(private storage: StorageService, private service: VendedorService,
+    private auth: AuthService,
      private sanitizer: DomSanitizer,  private router: Router) {
       this.profileImage = 'assets/img/avatar.png';
        this.localUser = this.storage.getLocalUser();
@@ -82,7 +84,7 @@ export class NavComponent implements OnInit {
     }
 
    private logOut() {
-    this.service.logout();
+    this.auth.logout();
     this.profileImage = 'assets/img/avatar.png';
     this.router.navigateByUrl('home');
     }

@@ -1,5 +1,5 @@
-import { AfterContentChecked, Injector, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { Injector, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import Messages from '../../enums/messages.enum';
 import { BaseResourceModel } from '../../models/base-resource.model';
@@ -8,6 +8,7 @@ import { BaseResourceService } from '../../services/base-resource.service';
 import { FieldMessage } from 'src/app/core/config/fieldmessage';
 import { Credencial } from 'src/app/pages/login/shared/credencial';
 import { API_CONFIG } from 'src/app/core/config/api.config';
+import { AuthService } from 'src/app/core/config/services/auth.service';
 
 
 export abstract class BaseResourceFormComponent<T extends BaseResourceModel> implements OnInit {
@@ -27,12 +28,15 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   protected route: ActivatedRoute;
   protected router: Router;
   public formBuilder: FormBuilder;
+  protected auth: AuthService;
+
 
   constructor(protected injector: Injector,
     public resource: T,
     protected baseResourceService: BaseResourceService<T>,
     protected jsonDataToResourceFn: (jsonData) => T,
-    protected alertService: AlertModalService) {
+    protected alertService: AlertModalService,
+  ) {
     this.route = this.injector.get(ActivatedRoute);
     this.router = this.injector.get(Router);
     this.formBuilder = this.injector.get(FormBuilder);
@@ -41,7 +45,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   public ngOnInit(): void {
     this.setCurrentAction();
     this.buildResourceForm();
-   // this.setImageSrc();
+    // this.setImageSrc();
     this.loadResource();
 
   }
@@ -50,7 +54,8 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   setImageSrc() {
     const id = this.resourceForm.get('id').value;
     if (id !== null) {
-      this.imageSrc == API_CONFIG.bucketBaseUrl + '/cat' + id + '.jpg';
+      this.imageSrc == API_CONFIG.bucketBaseUrl
+        + '/cat' + id + '.jpg';
     }
 
   }
@@ -76,9 +81,9 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   protected authenticate() {
     const creds: Credencial = this.resourceForm.value;
 
-    this.baseResourceService.authenticate(creds)
+    this.auth.authenticate(creds)
       .subscribe(response => {
-        this.baseResourceService.successfulLogin(response.headers.get('Authorization'));
+        this.auth.successfulLogin(response.headers.get('Authorization'));
         this.router.navigateByUrl('categorias');
       },
 
@@ -212,14 +217,14 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     console.log('chegouu');
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
-      console.log('evento' +  event.target.files[0].name);
+      console.log('evento' + event.target.files[0].name);
 
       const [file] = event.target.files;
       reader.readAsDataURL(file);
-       this.fileName = event.target.files[0].name;
+      this.fileName = event.target.files[0].name;
       reader.onload = () => {
 
-           this.imageSrc = reader.result as string;
+        this.imageSrc = reader.result as string;
 
         this.resourceForm.patchValue({
           fileSource: reader.result,

@@ -28,39 +28,6 @@ export class BaseResourceService<T extends BaseResourceModel> {
   }
 
 
-  authenticate(creds: User) {
-    console.log(creds.email + creds.senha);
-
-
-    return this.http.post(
-      this.apiPath,
-      creds,
-      {
-        observe: 'response',
-        responseType: 'text'
-      });
-  }
-
-  logout() {
-    return this.storage.setLocalUser(null);
-}
-  successfulLogin(authorizationValue: string) {
-    const tok = authorizationValue.substring(7);
-    const user: LocalUser = {
-      token: tok,
-      email: this.jwtHelper.decodeToken(tok).sub,
-      role: this.jwtHelper.decodeToken(tok).auth[0].authority,
-
-    };
-
-    if (this.jwtHelper.decodeToken(tok).auth.length > 0 && user.role === 'undefined') {
-
-      user.role = this.jwtHelper.decodeToken(tok).auth[1].authority;
-    }
-
-    this.storage.setLocalUser(user);
-
-  }
 
   getAllPaginator() {
     return this.http.get(`${this.apiPath}/page`).pipe(
