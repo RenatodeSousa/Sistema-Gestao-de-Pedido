@@ -52,17 +52,12 @@
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/nova-light/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/ngx-toastr/toastr.css"          
-
-           
-              
-               
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "node_modules/chart.js/dist/Chart.bundle.js"
-          
             ]
           },
           "configurations": {
@@ -162,5 +157,8 @@
       }
     }
   },
-  "defaultProject": "Gestao-de-Pedidos"
+  "defaultProject": "Gestao-de-Pedidos",
+  "cli": {
+    "analytics": "475022e5-490e-43d1-b5e4-5414c17ccac7"
+  }
 }

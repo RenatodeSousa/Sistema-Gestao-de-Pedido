@@ -1,59 +1,110 @@
-<div class="form-row">
-    <div class="form-group col-md-4">
-        <mat-form-field>
-            <mat-label>Cep:</mat-label>
-            <input matInput id="{{t.cep}}" formControlName="cep" [value]="t.cep">
-        </mat-form-field>
-    </div>
-    <div class="form-group col-md-4">
-        <mat-form-field>
-            <mat-label>Lorgradouro:</mat-label>
-            <input matInput id="{{t.logradouro}}" formControlName="logradouro" [value]="t.logradouro">
-        </mat-form-field>
-    </div>
-    <div class="form-group col-md-4">
-        <mat-form-field>
-            <mat-label>Complemento:</mat-label>
-            <input matInput id="{{t.complemento}}" formControlName="complemento" [value]="t.complemento">
-        </mat-form-field>
-    </div>
+<div  align="end">
+  <mat-icon (click)="close()">close</mat-icon>
 </div>
-<div class="form-row">
-    <div class="form-group col-md-4">
-        <mat-form-field>
-            <mat-label>Numero:</mat-label>
-            <input matInput id="{{t.numero}}" formControlName="numero" [value]="t.numero">
-        </mat-form-field>
-    </div>
-    <div class="form-group col-md-4">
-        <mat-form-field>
-            <mat-label>bairro:</mat-label>
-            <input matInput id="{{t.bairro}}" formControlName="bairro" [value]="t.bairro">
-        </mat-form-field>
-    </div>
-    <div class="form-group col-md-4">
-        <mat-form-field>
-            <mat-label>localidade:</mat-label>
-            <input matInput id="{{t.localidade}}" formControlName="localidade" [value]="t.localidade">
-        </mat-form-field>
-    </div>
-    <div class="form-group col-md-1">
-        <mat-form-field>
-            <mat-label>UF:</mat-label>
-            <input matInput id="{{t.uf}}" formControlName="uf" [value]="t.uf">
-        </mat-form-field>
-    </div>
-    <div class="form-group col-md-2">
-        <mat-form-field>
-            <mat-label>IBGE:</mat-label>
-            <input matInput id="{{t.ibge}}" formControlName="ibge" [value]="t.ibge">
-        </mat-form-field>
-    </div>
-    <div class="form-group col-md-1">
-        <mat-form-field>
-            <mat-label>GIA:</mat-label>
-            <input matInput id="{{t.gia}}" formControlName="gia" [value]="t.gia">
-        </mat-form-field>
-    </div>
 
-<mat-icon (click)="removeItem(i)" color="warn" matSuffix>delete_outline</mat-icon>
+<form [formGroup]="enderecoFormGroup" id="enderecoFormGroup" (submit)="save()">
+
+  <div class="modal-content">
+  <div class="modal-body ">
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-description>
+            Cliente:
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+
+              <mat-form-field>
+                <mat-label>Cep:</mat-label>
+                <input matInput id="cep" formControlName="cep">
+                <mat-icon color="warn" (click)=" pesquisarCep()"  matTooltip="Pesquisar por endereço" matSuffix>search
+                </mat-icon>
+              </mat-form-field>
+              <app-form-field-error [nameCampo]="'cep'"
+                                    [controlName]="enderecoFormGroup.get('cep')" ></app-form-field-error>
+
+            </div>
+            <div class="form-group col-md-4">
+              <mat-form-field>
+                <mat-label>Lorgradouro:</mat-label>
+                <input matInput id="logradouro" formControlName="logradouro">
+              </mat-form-field>
+              <app-form-field-error [nameCampo]="'logradouro'"
+                                    [controlName]="enderecoFormGroup.get('logradouro')"></app-form-field-error>
+
+            </div>
+            <div class="form-group col-md-4">
+              <mat-form-field>
+                <mat-label>Complemento:</mat-label>
+                <input matInput id="complemento" formControlName="complemento">
+              </mat-form-field>
+              <app-form-field-error [nameCampo]="'complemento'"
+                                    [controlName]="enderecoFormGroup.get('complemento')"></app-form-field-error>
+
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <mat-form-field>
+                <mat-label>Numero:</mat-label>
+                <input matInput id="numero" formControlName="numero">
+              </mat-form-field>
+
+              <app-form-field-error [nameCampo]="'numero'"
+                                    [controlName]="enderecoFormGroup.get('numero')"></app-form-field-error>
+
+            </div>
+            <div class="form-group col-md-4">
+              <mat-form-field>
+                <mat-label>bairro:</mat-label>
+                <input matInput id="bairro" formControlName="bairro">
+              </mat-form-field>
+              <app-form-field-error [nameCampo]="'bairro'"
+                                    [controlName]="enderecoFormGroup.get('bairro')"></app-form-field-error>
+            </div>
+            <div class="form-group col-md-4">
+              <mat-form-field>
+                <mat-label>localidade:</mat-label>
+                <input matInput id="localidade" formControlName="localidade">
+              </mat-form-field>
+              <app-form-field-error [nameCampo]="'localidade'"
+                                    [controlName]="enderecoFormGroup.get('localidade')"></app-form-field-error>
+            </div>
+            <div class="form-group col-md-2">
+              <mat-form-field>
+                <mat-label>UF:</mat-label>
+                <input matInput id="uf" formControlName="uf">
+              </mat-form-field>
+              <app-form-field-error [nameCampo]="'uf'" [controlName]="enderecoFormGroup.get('uf')">
+              </app-form-field-error>
+
+            </div>
+            <div class="form-group col-md-2">
+              <mat-form-field>
+                <mat-label>IBGE:</mat-label>
+                <input matInput id="ibge" formControlName="ibge">
+              </mat-form-field>
+            </div>
+            <div class="form-group col-md-2">
+              <mat-form-field>
+                <mat-label>GIA:</mat-label>
+                <input matInput id="gia" formControlName="gia">
+              </mat-form-field>
+            </div>
+          </div>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-button class="btn btn-danger" (click)="close()">Fechar</button>
+  <button mat-button type="submit" class="btn-primary" align="end">
+    Salvar
+  </button>
+</mat-dialog-actions>
+
+</form>

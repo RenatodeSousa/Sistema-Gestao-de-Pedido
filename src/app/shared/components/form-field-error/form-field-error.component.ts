@@ -13,6 +13,7 @@ import { FormControl } from '@angular/forms';
 export class FormFieldErrorComponent implements OnInit {
 
   @Input() controlName: FormControl;
+  @Input() nameCampo: string;
 
   constructor() { }
 
@@ -33,7 +34,7 @@ export class FormFieldErrorComponent implements OnInit {
 
   private getErrorMessage(): string | null {
     if (this.controlName.errors.required) {
-      return 'Dado obrigatório!';
+      return this.nameCampo + ' :campo obrigatório!';
     } else if (this.controlName.errors.minlength) {
       const requiredLength = this.controlName.errors.minlength.requiredLength;
       return `Deve ter no mínimo ${requiredLength} caracteres`;

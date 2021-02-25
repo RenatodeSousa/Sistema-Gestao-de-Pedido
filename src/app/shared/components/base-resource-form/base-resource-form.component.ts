@@ -1,4 +1,4 @@
-import { Injector, OnInit } from '@angular/core';
+import { Injector, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import Messages from '../../enums/messages.enum';
@@ -24,14 +24,16 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   public bucketUrl: string = API_CONFIG.bucketBaseUrl;
   public picture: File;
   private fileName: string;
+  @Output() mostrarMenuEmitter = true;
 
   protected route: ActivatedRoute;
   protected router: Router;
   public formBuilder: FormBuilder;
-  protected auth: AuthService;
+  public auth: AuthService;
 
 
-  constructor(protected injector: Injector,
+  constructor(
+    protected injector: Injector,
     public resource: T,
     protected baseResourceService: BaseResourceService<T>,
     protected jsonDataToResourceFn: (jsonData) => T,
@@ -40,6 +42,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     this.route = this.injector.get(ActivatedRoute);
     this.router = this.injector.get(Router);
     this.formBuilder = this.injector.get(FormBuilder);
+    this.auth = this.injector.get(AuthService);
   }
 
   public ngOnInit(): void {
@@ -66,32 +69,29 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
   public submitForm() {
-    this.submittingForm = true;
-    if (this.currentAction === 'Authenticate') {
-      this.authenticate();
-    } else {
-      if (this.currentAction === 'new') {
-        this.createResource();
+    console.log('cheggooooo'+this.resourceForm.valid)
+      this.submittingForm = true;
+      if (this.currentAction === 'Authenticate') {
+        const creds: Credencial = this.resourceForm.value;
+        this.authentcation(creds);
       } else {
-        this.updateResource();
+        if (this.currentAction === 'new') {
+          this.createResource();
+        } else {
+          this.updateResource();
+        }
       }
-    }
+
   }
 
-  protected authenticate() {
-    const creds: Credencial = this.resourceForm.value;
+  protected authentcation(creds) {
 
-    this.auth.authenticate(creds)
-      .subscribe(response => {
-        this.auth.successfulLogin(response.headers.get('Authorization'));
-        this.router.navigateByUrl('categorias');
-      },
-
-        error => {
-          console.log(' errooororroro' + error);
-          this.alertService.showAlertDanger(error.message);
-          this.router.navigateByUrl('home');
-        });
+    this.auth.authenticate(creds).subscribe(response => {
+      this.auth.successfulLogin(response.headers.get('Authorization'));
+      this.mostrarMenuEmitter = true;
+      this.router.navigateByUrl('categorias');
+    },
+      error => { console.log('erro do login' + error.Authorization); });
   }
 
 

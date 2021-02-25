@@ -20,8 +20,7 @@ import { ImageUtilService } from '../shared/components/material-file-upload/imag
 import { ErrorInterceptorProvider } from './config/interceptors/error-interceptor';
 import { AuthService } from './config/services/auth.service';
 import { AuthGuardService } from './config/guard/auth-guard.service';
-
-
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 
 
@@ -38,7 +37,7 @@ import { AuthGuardService } from './config/guard/auth-guard.service';
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
-    // NgxMaskModule.forRoot(),
+     NgxMaskModule.forRoot(),
     // HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase),
     ToastrModule.forRoot({
       timeOut: 5000,

@@ -1,4 +1,4 @@
-<mat-toolbar *ngIf="localUser !== null" class="dark bg-dark text-white">
+<mat-toolbar  class="dark bg-dark text-white"  *ngIf="mostrarMenu">
   <mat-toolbar-row>
     <button mat-icon-button>
       <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
@@ -9,11 +9,12 @@
       <a mat-button [routerLink]="'/reports'"> Relatórios </a>
       <a mat-button [routerLink]="'/entries'"> Lançamentos </a>
       <a mat-button [routerLink]="'/categorias'"> Categorias </a>
+      <a mat-button [routerLink]="'/produtos'"> Produtos </a>
       <a mat-button [routerLink]="'/vendedores/'">Vendedores </a>
       <a mat-button [routerLink]="'/clientes'">Clientes </a>
 
     </div>
-    
+
     <span class="example-spacer"></span>
     <div>
       <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true"
@@ -37,6 +38,7 @@
       <a mat-list-item [routerLink]="'/reports'"> Relatórios </a>
       <a mat-list-item [routerLink]="'/entries'"> Lançamentos </a>
       <a mat-list-item [routerLink]="'/categorias'"> Categorias </a>
+      <a mat-list-item [routerLink]="'/produtos'"> Produtos </a>
       <a mat-list-item [routerLink]="'/vendedores'">Vendedores </a>
       <a mat-list-item [routerLink]="'/clientes'">Clientes </a>
       <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
