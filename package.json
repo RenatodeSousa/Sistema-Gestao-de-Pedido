@@ -38,7 +38,7 @@
     "moment": "^2.26.0",
     "ng-pick-datetime": "^6.0.16",
     "ngx-bootstrap": "3.1.1",
-    "ngx-mask": "^9.1.2",
+    "ngx-mask": "^9.1.4",
     "ngx-toastr": "^10.2.0",
     "popper.js": "^1.16.1",
     "primeicons": "^2.0.0",

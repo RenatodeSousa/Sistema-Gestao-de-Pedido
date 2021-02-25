@@ -1,24 +1,24 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CategoriaListComponent } from './categoria-list/categoria-list.component';
-import { CategoriaFormComponent } from './categoria-form/categoria-form.component';
-import { CategoriaResolver } from './shared/resolvers/categoria-resolver.guard';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {ProdutoListComponent} from './produto-list/produto-list.component';
+import {ProdutoFormComponent} from './produto-form/produto-form.component';
+import {ProdutoResolver} from "./shared/resolvers/produto-resolver.guard";
 
 
 const routes: Routes = [
   {
     path: '',
-    component: CategoriaListComponent
+    component: ProdutoListComponent
   },
   {
     path: 'new',
-    component: CategoriaFormComponent
+    component: ProdutoFormComponent
   },
   {
     path: ':id/edit',
-    component: CategoriaFormComponent,
+    component: ProdutoFormComponent,
     resolve: {
-      resource: CategoriaResolver
+      resource: ProdutoResolver
     }
   }
 ];
@@ -27,4 +27,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CategoriasRoutingModule { }
+export class ProdutosRoutingModule { }

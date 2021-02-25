@@ -9,6 +9,7 @@ import { User } from 'src/app/pages/login/shared/user.model';
 import { LocalUser } from 'src/app/core/config/local_user';
 import { ImageUtilService } from '../components/material-file-upload/image-util.service';
 import { API_CONFIG } from 'src/app/core/config/api.config';
+import { AuthService } from 'src/app/core/config/services/auth.service';
 
 export class BaseResourceService<T extends BaseResourceModel> {
 

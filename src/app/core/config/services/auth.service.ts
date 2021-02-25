@@ -1,5 +1,5 @@
 
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { StorageService } from '../storage.service';
@@ -14,6 +14,9 @@ import { LocalUser } from '../local_user';
 @Injectable()
 export class AuthService {
 
+
+  mostrarMenuEmitter = new EventEmitter<boolean>();
+
     public jwtHelper: JwtHelperService = new JwtHelperService();
 
     constructor(
@@ -22,7 +25,6 @@ export class AuthService {
 
     ) {
     }
-
 
 
     authenticate(creds: User) {
@@ -49,7 +51,6 @@ export class AuthService {
 
     successfulLogin(authorizationValue: string) {
         const tok = authorizationValue.substring(7);
-
         const user: LocalUser = {
             token: tok,
             email: this.jwtHelper.decodeToken(tok).sub,
@@ -70,6 +71,7 @@ export class AuthService {
 
 
     logout() {
+      this.mostrarMenuEmitter.emit(false);
         return this.storage.setLocalUser(null);
     }
 
@@ -78,6 +80,7 @@ export class AuthService {
         if (localUser == null) {
             return false;
         }
+        this.mostrarMenuEmitter.emit(true);
         return !this.jwtHelper.isTokenExpired(localUser.token);
     }
 }

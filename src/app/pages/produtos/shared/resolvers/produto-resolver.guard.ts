@@ -1,20 +1,21 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
-import { Observable} from 'rxjs';
-import { Categoria } from '../model/categoria.model';
-import { CategoriaService } from '../service/categoria.service';
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
+import {Observable} from 'rxjs';
+import {Produto} from '../model/produto.model';
+import {ProdutoService} from '../service/produto.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class CategoriaResolver implements Resolve<Categoria> {
+export class ProdutoResolver implements Resolve<Produto> {
 
-  constructor(private categoriaService: CategoriaService) { }
+  constructor(private produtoService: ProdutoService) {
+  }
 
-  resolve(route: ActivatedRouteSnapshot): Observable<Categoria> | Promise<Categoria> | Categoria {
+  resolve(route: ActivatedRouteSnapshot): Observable<Produto> | Promise<Produto> | Produto {
     if (route.params && route.params['id']) {
-      return this.categoriaService.getById(route.params['id']);
+      return this.produtoService.getById(route.params['id']);
     }
 
     return null;

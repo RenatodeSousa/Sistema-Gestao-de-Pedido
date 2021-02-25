@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 
-import { CategoriasRoutingModule } from './categorias-routing.module';
-import { CategoriaFormComponent } from './categoria-form/categoria-form.component';
-import { CategoriaListComponent } from './categoria-list/categoria-list.component';
+import { ProdutosRoutingModule } from './produtos-routing.module';
+import { ProdutoFormComponent } from './produto-form/produto-form.component';
+import { ProdutoListComponent } from './produto-list/produto-list.component';
 
 
 
@@ -11,12 +11,12 @@ import { CategoriaListComponent } from './categoria-list/categoria-list.componen
 
 @NgModule({
   imports: [
-    CategoriasRoutingModule,
+    ProdutosRoutingModule,
     SharedModule
   ],
   declarations: [
-    CategoriaListComponent,
-    CategoriaFormComponent
+    ProdutoListComponent,
+    ProdutoFormComponent
   ]
 })
-export class CategoriasModule { }
+export class ProdutosModule { }

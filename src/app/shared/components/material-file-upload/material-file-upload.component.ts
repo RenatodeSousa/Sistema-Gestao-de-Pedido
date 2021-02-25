@@ -29,9 +29,7 @@ export class MaterialFileUploadComponent {
      reader.readAsDataURL(file);
 
      reader.onload = () => {
-
        this.imageSrc = reader.result as string;
-
      };
 
    }
