@@ -23,7 +23,7 @@ private vendedor = new Vendedor();
   constructor(protected vendedorService: VendedorService, public dialog: MatDialog, protected alertService: AlertModalService) {
     super(vendedorService, alertService);
     this.componentName = 'Vendedores';
-    this.displayedColumns = ['id', 'nome', 'email', 'statusCliente', 'telefone', 'acao'];
+    this.displayedColumns = ['id', 'nome', 'email', 'status', 'telefone', 'acao'];
   }
 
   ngOnInit() {

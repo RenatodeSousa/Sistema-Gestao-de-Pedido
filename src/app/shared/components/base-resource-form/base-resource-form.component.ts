@@ -1,14 +1,14 @@
-import { Injector, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Injector, OnInit, Output} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import Messages from '../../enums/messages.enum';
-import { BaseResourceModel } from '../../models/base-resource.model';
-import { AlertModalService } from '../../services/alert-modal.service';
-import { BaseResourceService } from '../../services/base-resource.service';
-import { FieldMessage } from 'src/app/core/config/fieldmessage';
-import { Credencial } from 'src/app/pages/login/shared/credencial';
-import { API_CONFIG } from 'src/app/core/config/api.config';
-import { AuthService } from 'src/app/core/config/services/auth.service';
+import {BaseResourceModel} from '../../models/base-resource.model';
+import {AlertModalService} from '../../services/alert-modal.service';
+import {BaseResourceService} from '../../services/base-resource.service';
+import {FieldMessage} from 'src/app/core/config/fieldmessage';
+import {Credencial} from 'src/app/pages/login/shared/credencial';
+import {API_CONFIG} from 'src/app/core/config/api.config';
+import {AuthService} from 'src/app/core/config/services/auth.service';
 
 
 export abstract class BaseResourceFormComponent<T extends BaseResourceModel> implements OnInit {
@@ -58,7 +58,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     const id = this.resourceForm.get('id').value;
     if (id !== null) {
       this.imageSrc == API_CONFIG.bucketBaseUrl
-        + '/cat' + id + '.jpg';
+      + '/cat' + id + '.jpg';
     }
 
   }
@@ -69,29 +69,30 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
   public submitForm() {
-    console.log('cheggooooo'+this.resourceForm.valid)
-      this.submittingForm = true;
-      if (this.currentAction === 'Authenticate') {
-        const creds: Credencial = this.resourceForm.value;
-        this.authentcation(creds);
+    this.submittingForm = true;
+    if (this.currentAction === 'Authenticate') {
+      const creds: Credencial = this.resourceForm.value;
+      this.authentcation(creds);
+    } else {
+      if (this.currentAction === 'new') {
+        this.createResource();
       } else {
-        if (this.currentAction === 'new') {
-          this.createResource();
-        } else {
-          this.updateResource();
-        }
+        this.updateResource();
       }
+    }
 
   }
 
   protected authentcation(creds) {
 
     this.auth.authenticate(creds).subscribe(response => {
-      this.auth.successfulLogin(response.headers.get('Authorization'));
-      this.mostrarMenuEmitter = true;
-      this.router.navigateByUrl('categorias');
-    },
-      error => { console.log('erro do login' + error.Authorization); });
+        this.auth.successfulLogin(response.headers.get('Authorization'));
+        this.mostrarMenuEmitter = true;
+        this.router.navigateByUrl('categorias');
+      },
+      error => {
+        console.log('erro do login' + error.Authorization);
+      });
   }
 
 
@@ -171,7 +172,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   protected actionsForError(error) {
     this.alertService.showAlertDanger(Messages.OPERACAO_ERRO);
     this.submittingForm = false;
-
 
 
     let objetoError = error;

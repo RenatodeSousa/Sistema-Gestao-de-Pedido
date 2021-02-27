@@ -5,6 +5,7 @@ import {FormArray, Validators,} from '@angular/forms';
 import {BaseResourceFormComponent} from 'src/app/shared/components/base-resource-form/base-resource-form.component';
 import {AlertModalService} from 'src/app/shared/services/alert-modal.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {Vendedor} from "../../vendedor/shared/vendedor.model";
 
 
 @Component({
@@ -15,7 +16,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 export class ClientesModalEditCreateComponent extends BaseResourceFormComponent<Cliente> implements OnInit {
 
   private title: string;
-  private item: [];
+
 
 
   constructor(protected clienteService: ClienteService,
@@ -29,7 +30,6 @@ export class ClientesModalEditCreateComponent extends BaseResourceFormComponent<
 
 
   ngOnInit() {
-    console.log('esta aquiiiii'+ this.data);
     this.buildResourceForm();
     this.setCurrentAction();
   }
@@ -44,7 +44,7 @@ export class ClientesModalEditCreateComponent extends BaseResourceFormComponent<
       telefones: this.formBuilder.array([]),
       cpfOuCnpj: [null, Validators.compose([Validators.required, Validators.minLength(11), Validators.maxLength(14)])],
       dataNascimento: [this.resource.dataNascimento],
-      statusCliente: [this.resource.statusCliente],
+      status: [this.resource.status == 'ATIVO'? true : false ],
          });
     this.telephone();
 
@@ -59,25 +59,32 @@ export class ClientesModalEditCreateComponent extends BaseResourceFormComponent<
       this.title = 'Editar cliente';
       this.currentAction = 'edit';
      this.updateForm(this.data);
-      console.log('teetettetet'+this.data);
+
     }
   }
 
 
   private updateForm(cliente: Cliente) {
-console.log('teetettetet'+cliente);
     this.resourceForm.patchValue(cliente);
+     this.resourceForm.patchValue({
+      status: cliente.status == 'ATIVO'
+    });
+
+
+
+
   }
 
   private telephone() {
     if (this.data !== undefined) {
       const controlArray = this.resourceForm.get('telefones') as FormArray;
-      if(this.data.telefones != undefined || this.data.telefones != null){
-        console.log('rerwefsrgtrgrthrhh')
-        Object.keys(this.data.telefones).forEach((i) => {
+
+      if(this.data.telefone != undefined || this.data.telefone != null){
+
+        Object.keys(this.data.telefone).forEach((i) => {
           controlArray.push(
             this.formBuilder.group({
-              tel: [this.data.telefones[i]],
+              tel: [this.data.telefone[i]],
             })
           );
         });

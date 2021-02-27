@@ -7,7 +7,7 @@ export class Vendedor extends BaseResourceModel {
     public telefones?: string[],
     public endereco?: Endereco,
     public email?: string,
-    public statusCliente?: string,
+    public status?: string,
     public dataNascimento?: Date,
     public imageUrl?: string,
   ) {

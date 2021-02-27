@@ -23,7 +23,7 @@ export class ClientesListComponent extends BaseResourceListComponent<Cliente> {
      protected alertService: AlertModalService, public dialog: MatDialog) {
      super(clienteService, alertService);
      this.componentName = 'Clientes';
-     this.displayedColumns = ['id', 'nome', 'email', 'statusCliente', 'telefone', 'acao'];
+     this.displayedColumns = ['id', 'nome', 'email', 'status', 'telefones', 'acao'];
    }
 
    ngOnInit() {
@@ -71,7 +71,9 @@ export class ClientesListComponent extends BaseResourceListComponent<Cliente> {
 
 
  openDialogEditCreate(row) {
+   console.log('o que tem na linha '+ row);
   const dialogRef = this.dialog.open(ClientesModalEditCreateComponent, {
+
       data: row
 
     });

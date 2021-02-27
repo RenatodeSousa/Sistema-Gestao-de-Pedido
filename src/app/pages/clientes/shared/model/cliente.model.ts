@@ -8,7 +8,7 @@ export class Cliente extends BaseResourceModel {
     public endereco?: Endereco,
     public email?: string,
     public cpfOuCnpj?: string,
-    public statusCliente?: string,
+    public status?: string,
     public dataNascimento?: Date,
     public tipoFisicoJuridico?: string,
   ) {

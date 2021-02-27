@@ -40,9 +40,9 @@
   </ng-container>
 
 
-  <ng-container matColumnDef="statusCliente">
-    <th *matHeaderCellDef mat-sort-header> Status Cliente </th>
-    <td mat-cell *matCellDef="let element"> {{element.statusCliente == true? 'Ativo':'Desativado' }} </td>
+  <ng-container matColumnDef="status">
+    <th *matHeaderCellDef mat-sort-header> Status Vendedor </th>
+    <td mat-cell *matCellDef="let element"> {{element.status == true? 'Ativo':'Desativado' }} </td>
   </ng-container>
   <ng-container matColumnDef="acao">
     <th *matHeaderCellDef> Ações </th>
