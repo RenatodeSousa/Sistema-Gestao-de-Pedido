@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "npm serve.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.901.8",
-    "@angular/cli": "^11.2.2",
+    "@angular/cli": "^11.2.3",
     "@angular/compiler-cli": "^9.1.13",
     "@angular/language-service": "^9.1.11",
     "@types/jasmine": "~2.8.6",
