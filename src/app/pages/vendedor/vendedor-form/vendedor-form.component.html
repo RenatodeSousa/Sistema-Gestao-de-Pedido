@@ -77,7 +77,7 @@
                     <mat-form-field>
                       <mat-label>Fone:</mat-label>
                       <input matInput id="{{t.tel}}" formControlName="tel" [value]="t" mask="(000) 000 00 00">
-                      <mat-icon (click)="removeTelefones(i)" color="warn" matSuffix>delete_outline</mat-icon>
+                      <mat-icon (click)="this.removeTelefones(i)" color="warn" matSuffix>delete_outline</mat-icon>
                     </mat-form-field>
                   </div>
 

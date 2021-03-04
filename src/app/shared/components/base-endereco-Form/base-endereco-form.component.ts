@@ -69,7 +69,7 @@ export class BaseEnderecoFormComponent extends BaseResourceFormComponent<Enderec
   }
 
 
-  protected pesquisarCep() {
+  public pesquisarCep() {
     let cep: string = this.enderecoFormGroup.get('cep').value;
 
     if (cep != null) {

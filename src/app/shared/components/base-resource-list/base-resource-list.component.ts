@@ -69,7 +69,7 @@ export abstract class BaseResourceListComponent<T extends BaseResourceModel> imp
   }
 
 
-  protected actionsForError(error) {
+  public actionsForError(error) {
     this.alertService.showAlertDanger(Messages.OPERACAO_ERRO);
 
     let objetoError = error;

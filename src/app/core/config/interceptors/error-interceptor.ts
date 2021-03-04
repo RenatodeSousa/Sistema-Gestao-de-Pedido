@@ -12,7 +12,7 @@ import { catchError } from 'rxjs/operators';
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-    constructor(public storage: StorageService, protected alertService: AlertModalService) {
+    constructor(public storage: StorageService, public alertService: AlertModalService) {
     }
 
 

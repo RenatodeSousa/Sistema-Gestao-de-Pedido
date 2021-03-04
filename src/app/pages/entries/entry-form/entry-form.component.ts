@@ -62,7 +62,7 @@ export class EntryFormComponent extends BaseResourceFormComponent<Entry> impleme
     );
   }
 
-  protected buildResourceForm(): void {
+  public buildResourceForm(): void {
     this.resourceForm = this.formBuilder.group({
       id: [null],
       name: [null, Validators.compose([Validators.required, Validators.minLength(2)])],
@@ -81,11 +81,11 @@ export class EntryFormComponent extends BaseResourceFormComponent<Entry> impleme
     );
   }
 
-  protected creationPageTitle(): string {
+  public creationPageTitle(): string {
     return 'Cadastro de Novo Lançamento';
   }
 
-  protected editionPageTitle(): string {
+  public editionPageTitle(): string {
     const entryName = this.resource.name || '';
     return `Editando Lançamento: ${entryName}`;
   }

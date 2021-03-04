@@ -53,7 +53,7 @@ export class VendedorFormComponent extends BaseResourceFormComponent<Vendedor> {
     });
   }
 
-  protected buildResourceForm(): void {
+  public buildResourceForm(): void {
     this.resourceForm = this.formBuilder.group({
       id: [null],
       nome: [null, Validators.compose([Validators.required, Validators.minLength(3)])],
@@ -69,18 +69,18 @@ export class VendedorFormComponent extends BaseResourceFormComponent<Vendedor> {
   }
 
 
-  protected creationPageTitle(): string {
+  public creationPageTitle(): string {
     return 'Cadastro de Novo Vendedor';
   }
 
 
-  protected editionPageTitle(): string {
+  public editionPageTitle(): string {
     const vendedorNome = this.resource.nome || '';
     return `Editando Vendedor: ${vendedorNome}`;
   }
 
 
-  protected pesquisarCep(cep: string) {
+  public pesquisarCep(cep: string) {
 
     if (cep.length === 0) {
       this.openDialogEditCreate(null);
@@ -103,24 +103,24 @@ export class VendedorFormComponent extends BaseResourceFormComponent<Vendedor> {
     return this.resourceForm.get('telefones') as FormArray;
   }
 
-  protected newTelefone(): FormGroup {
+  public newTelefone(): FormGroup {
     return this.formBuilder.group({
       tel: [],
     });
   }
 
 
-  protected addTelefones() {
+  public addTelefones() {
     this.telefones.push(this.newTelefone());
   }
 
 
-  protected removeTelefones(i: number) {
+  public removeTelefones(i: number) {
     this.telefones.removeAt(i);
   }
 
 
-  protected loadResource() {
+  public loadResource() {
     if (this.currentAction === 'edit') {
       const routeResource = this.route.snapshot.data['resource'];
       if (routeResource) {

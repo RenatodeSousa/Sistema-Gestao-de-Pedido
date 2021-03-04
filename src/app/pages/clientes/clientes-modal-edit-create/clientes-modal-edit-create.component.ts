@@ -35,7 +35,7 @@ export class ClientesModalEditCreateComponent extends BaseResourceFormComponent<
   }
 
 
-  protected buildResourceForm(): void {
+  public buildResourceForm(): void {
     this.resourceForm = this.formBuilder.group({
       id: [null],
       nome: [null, Validators.compose([Validators.required, Validators.minLength(3)])],
@@ -51,7 +51,7 @@ export class ClientesModalEditCreateComponent extends BaseResourceFormComponent<
   }
 
 
-  protected setCurrentAction(): void {
+  public setCurrentAction(): void {
     if (this.data === undefined) {
       this.title = 'Adicionar um novo cliente';
       this.currentAction = 'new';
@@ -93,7 +93,7 @@ export class ClientesModalEditCreateComponent extends BaseResourceFormComponent<
   }
 
 
-  protected addTelefones() {
+  public addTelefones() {
     const controlArray = this.resourceForm.get('telefones') as FormArray;
     controlArray.push(
       this.formBuilder.group({
@@ -103,7 +103,7 @@ export class ClientesModalEditCreateComponent extends BaseResourceFormComponent<
 
   }
 
-  protected removeTelefones(i) {
+  public removeTelefones(i) {
     const controlArray = this.resourceForm.get('telefones') as FormArray;
     controlArray.removeAt(i);
   }

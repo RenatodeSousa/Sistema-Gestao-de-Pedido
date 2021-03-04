@@ -83,7 +83,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
   }
 
-  protected authentcation(creds) {
+  public authentcation(creds) {
 
     this.auth.authenticate(creds).subscribe(response => {
         this.auth.successfulLogin(response.headers.get('Authorization'));
@@ -96,7 +96,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
 
-  protected createResource() {
+  public createResource() {
 
     if (this.file != null) {
       this.sendPicture();
@@ -112,7 +112,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     this.baseResourceService.uploadPicture(this.file);
   }
 
-  protected updateResource() {
+  public updateResource() {
     const resource: T = this.jsonDataToResourceFn(this.resourceForm.value);
     this.baseResourceService.update(resource).subscribe(
       (resultResource) => this.actionsForSuccess(resultResource),
@@ -120,7 +120,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     );
   }
 
-  protected setCurrentAction(): void {
+  public setCurrentAction(): void {
     if (this.route.snapshot.url[0].path === 'new') {
       this.currentAction = 'new';
     } else {
@@ -128,7 +128,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     }
   }
 
-  protected loadResource() {
+  public loadResource() {
     if (this.currentAction === 'edit') {
       const routeResource = this.route.snapshot.data['resource'];
       if (routeResource) {
@@ -144,7 +144,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
 
-  protected setPageTitle(): void {
+  public setPageTitle(): void {
     if (this.currentAction === 'new') {
       this.pageTitle = this.creationPageTitle();
     } else {
@@ -152,15 +152,15 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     }
   }
 
-  protected creationPageTitle(): string {
+  public creationPageTitle(): string {
     return 'Novo';
   }
 
-  protected editionPageTitle(): string {
+  public editionPageTitle(): string {
     return 'Edição';
   }
 
-  protected actionsForSuccess(resource: T) {
+  public actionsForSuccess(resource: T) {
     let baseComponentPath: string;
     if (this.route.snapshot.parent !== null) {
       baseComponentPath = this.route.snapshot.parent.url[0].path;
@@ -169,7 +169,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     }
   }
 
-  protected actionsForError(error) {
+  public actionsForError(error) {
     this.alertService.showAlertDanger(Messages.OPERACAO_ERRO);
     this.submittingForm = false;
 
@@ -236,6 +236,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     }
   }
 
-  protected abstract buildResourceForm(): void;
+  public abstract buildResourceForm(): void;
 
 }

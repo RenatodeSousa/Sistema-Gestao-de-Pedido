@@ -37,7 +37,7 @@ export class ProdutoFormComponent extends BaseResourceFormComponent<Produto>  {
     });
   }
 
-  protected buildResourceForm(): void {
+  public buildResourceForm(): void {
     this.resourceForm = this.formBuilder.group({
       id: [null],
       nome: [null, Validators.compose([Validators.required, Validators.minLength(2)])],
@@ -51,11 +51,11 @@ export class ProdutoFormComponent extends BaseResourceFormComponent<Produto>  {
   }
 
 
-  protected creationPageTitle(): string {
+  public creationPageTitle(): string {
     return 'Cadastro de Novo Produto';
   }
 
-  protected editionPageTitle(): string {
+  public editionPageTitle(): string {
     const produtoNome = this.resource.nome || '';
     return `Editando Produto: ${produtoNome}`;
   }

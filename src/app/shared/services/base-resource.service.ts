@@ -101,18 +101,18 @@ export class BaseResourceService<T extends BaseResourceModel> {
   }
 
 
-  protected jsonDataToResource(jsonData: any): T {
+  public jsonDataToResource(jsonData: any): T {
     return this.jsonDataToResourceFn(jsonData);
   }
 
-  protected jsonDataToResources(jsonData: any[]): T[] {
+  public jsonDataToResources(jsonData: any[]): T[] {
 
     const resources: T[] = [];
     jsonData.forEach(element => resources.push(this.jsonDataToResourceFn(element)));
     return resources;
   }
 
-  protected handleError(error: any): Observable<any> {
+  public handleError(error: any): Observable<any> {
     return throwError(error);
   }
 

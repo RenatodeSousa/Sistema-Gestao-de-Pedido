@@ -21,14 +21,14 @@ export class LoginComponent extends BaseResourceFormComponent < User > {
 
 
 
-  protected buildResourceForm(): void {
+  public buildResourceForm(): void {
 
     this.resourceForm = this.formBuilder.group({
       email: [null ],
       senha: [null],
     });
   }
-  protected setCurrentAction(): void {
+  public setCurrentAction(): void {
     this.currentAction = 'Authenticate';
   }
 
