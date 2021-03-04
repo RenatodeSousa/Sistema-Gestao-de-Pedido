@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "gestao-pedido"
+  "defaultProject": "gestao-pedido",
+  "cli": {
+    "analytics": "78c169aa-d3f8-4f34-8cd1-e428dfc0c45f"
+  }
 }
