@@ -9,7 +9,7 @@ import {NgxMaskModule} from 'ngx-mask';
 import { MaterialModule } from '../core/components/material/material-module';
 import { ModalConfirmationComponent } from './components/modal-confirmation/modal-confirmation.component';
 import { ServerErrorMessagesComponent } from './components/server-error-messages/server-error-messages.component';
-import { ModalEditInsertComponent } from '../pages/vendedor/modal-edit-insert/modal-edit-insert.component';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BaseEnderecoFormComponent } from './components/base-endereco-Form/base-endereco-form.component';
@@ -39,10 +39,10 @@ import { MaterialFileUploadComponent } from './components/material-file-upload/m
     FormFieldErrorComponent,
     ModalConfirmationComponent,
     ServerErrorMessagesComponent,
-    ModalEditInsertComponent,
+
     BaseEnderecoFormComponent,
     MaterialFileUploadComponent,
-   
+
 
 
 
@@ -58,7 +58,7 @@ import { MaterialFileUploadComponent } from './components/material-file-upload/m
     NgxMaskModule,
     ModalConfirmationComponent,
     ServerErrorMessagesComponent,
-    ModalEditInsertComponent,
+
     BaseEnderecoFormComponent,
     MaterialFileUploadComponent,
 

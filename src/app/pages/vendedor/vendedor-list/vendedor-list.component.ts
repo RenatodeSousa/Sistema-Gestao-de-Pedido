@@ -17,7 +17,7 @@ import { ModalConfirmationComponent } from 'src/app/shared/components/modal-conf
 export class VendedorListComponent extends BaseResourceListComponent<Vendedor> {
 
 
-private vendedor = new Vendedor();
+  vendedor = new Vendedor();
 
 
   constructor(protected vendedorService: VendedorService, public dialog: MatDialog, protected alertService: AlertModalService) {

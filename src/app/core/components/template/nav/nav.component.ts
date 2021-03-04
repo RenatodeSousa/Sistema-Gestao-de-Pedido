@@ -22,7 +22,7 @@ export class NavComponent implements OnInit {
   drawer: MatSidenav;
 
 
-  private profileImage;
+  public profileImage;
   private vendedor: Vendedor;
   private localUser;
 
@@ -41,7 +41,7 @@ export class NavComponent implements OnInit {
   }
 
 
-  private verificarImage() {
+  public verificarImage() {
 
     if (this.localUser && this.localUser.email) {
       this.service.findByEmail(this.localUser.email)
@@ -87,7 +87,7 @@ export class NavComponent implements OnInit {
   }
 
 
-  private logOut() {
+  public logOut() {
     this.auth.logout();
     this.profileImage = 'assets/img/avatar.png';
     this.router.navigateByUrl('home');

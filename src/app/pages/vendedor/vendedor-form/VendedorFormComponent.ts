@@ -22,8 +22,8 @@ export class VendedorFormComponent extends BaseResourceFormComponent<Vendedor> {
 
 
   public vendedor: Vendedor = new Vendedor();
-  private numeroCep: string;
-  private profileImage;
+  public numeroCep: string;
+  public profileImage;
   isEndereco: boolean = false;
 
 
@@ -193,5 +193,9 @@ export class VendedorFormComponent extends BaseResourceFormComponent<Vendedor> {
     });
   }
 
+
+  getControls() {
+    return (this.resourceForm.get('telefones') as FormArray).controls;
+  }
 
 }

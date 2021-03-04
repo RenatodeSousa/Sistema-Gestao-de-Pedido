@@ -23,7 +23,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   public errorMessage: string;
   public bucketUrl: string = API_CONFIG.bucketBaseUrl;
   public picture: File;
-  private fileName: string;
+  public fileName: string;
   @Output() mostrarMenuEmitter = true;
 
   protected route: ActivatedRoute;

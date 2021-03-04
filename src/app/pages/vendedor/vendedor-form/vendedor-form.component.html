@@ -72,7 +72,7 @@
                 <mat-label (click)="addTelefones()">Adicionar telefone a lista:</mat-label>
                 <mat-icon (click)="addTelefones()" class="green-icon">add_circle_outline</mat-icon>
                 <div class="scrollbar scrollbar-danger">
-                  <div *ngFor="let t of  resourceForm.controls.telefones.controls; let i = index" [formGroupName]="i">
+                  <div *ngFor="let t of  resourceForm.controls.telefones.value; let i = index" [formGroupName]="i">
                     {{i}}
                     <mat-form-field>
                       <mat-label>Fone:</mat-label>
