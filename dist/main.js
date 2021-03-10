@@ -6479,7 +6479,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "API_CONFIG", function() { return API_CONFIG; });
 var API_CONFIG = {
     // baseUrl: 'http://localhost:8080',
-    baseUrl: 'https://controle-pedido.herokuapp.com',
+    baseUrl: 'http://controle-pedido.herokuapp.com',
     bucketBaseUrl: 'https://marmoraria.s3.sa-east-1.amazonaws.com',
 };
 
