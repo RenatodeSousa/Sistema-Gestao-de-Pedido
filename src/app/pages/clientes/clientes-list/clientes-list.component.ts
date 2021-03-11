@@ -72,7 +72,6 @@ export class ClientesListComponent extends BaseResourceListComponent<Cliente> {
  openDialogEditCreate(row) {
    console.log('o que tem na linha '+ row);
   const dialogRef = this.dialog.open(ClientesModalEditCreateComponent, {
-
       data: row
 
     });
