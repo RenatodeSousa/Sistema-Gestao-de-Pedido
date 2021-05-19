@@ -16,7 +16,7 @@ export class ProdutoFormComponent extends BaseResourceFormComponent<Produto>  {
 
 
   public produto: Produto = new Produto();
-  public categoriaSelecionado: Categoria = new Categoria();
+  public categoriaSelecionado: Categoria;
   public listaCategoria: Categoria[] = [];
 
 
@@ -58,10 +58,6 @@ export class ProdutoFormComponent extends BaseResourceFormComponent<Produto>  {
   public editionPageTitle(): string {
     const produtoNome = this.resource.nome || '';
     return `Editando Produto: ${produtoNome}`;
-  }
-
-  selectCategoria(categoria: Categoria ) {
-    this.categoriaSelecionado = categoria;
   }
 
 }

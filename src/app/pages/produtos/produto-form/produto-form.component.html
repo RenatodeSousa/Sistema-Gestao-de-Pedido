@@ -30,10 +30,10 @@
       <div class="form-group col-md-2">
         <mat-form-field>
           <mat-label>Categorias</mat-label>
-          <mat-select placeholder="Selecione uma Categoria" #matSelect>
+
+          <mat-select [(ngModel)]="categoriaSelecionado" placeholder="Selecione uma Categoria"  formControlName="categoria">
             <mat-option [value]="null">Escolha a Categoria</mat-option>
-            <mat-option *ngFor="let opcao of listaCategoria" [value]="opcao"
-                        (onSelectionChange)="selectCategoria(opcao)">
+            <mat-option *ngFor="let opcao of listaCategoria" [value]="opcao">
               {{opcao.nome}}
             </mat-option>
           </mat-select>

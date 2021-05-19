@@ -24,7 +24,6 @@ export class BaseResourceService<T extends BaseResourceModel> {
   constructor(protected apiPath: string,
     protected injector: Injector,
     protected jsonDataToResourceFn: (jsonData: any) => T) {
-
     this.http = injector.get(HttpClient);
   }
 

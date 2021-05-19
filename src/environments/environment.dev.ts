@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  URL_REQUEST: "http://localhost:4200",
 };
+
 export const API_CONFIG = {
   baseUrl: 'http://localhost:8080',
   // baseUrl: 'https://controle-pedido.herokuapp.com',

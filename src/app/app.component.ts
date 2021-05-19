@@ -1,7 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {StorageService} from "./core/config/storage.service";
-import {AuthService} from "./core/config/services/auth.service";
+import {Component} from '@angular/core';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,9 +7,5 @@ import {AuthService} from "./core/config/services/auth.service";
 })
 export class AppComponent {
   title = 'app';
-
-
-
-
 
 }
