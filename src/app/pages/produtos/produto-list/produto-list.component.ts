@@ -18,7 +18,8 @@ export class ProdutoListComponent extends BaseResourceListComponent<Produto> {
   columns = [
     { columnDef: 'id', header: 'ID', cell: (element: any) => `${element.id}` },
     { columnDef: 'nome', header: 'Nome', cell: (element: any) => `${element.nome}` },
-    { columnDef: 'descricao', header: 'Descrição', cell: (element: any) => `${element.email}` },
+    { columnDef: 'descricao', header: 'Descrição', cell: (element: any) => `${element.descricao}` },
+    { columnDef: 'categoria', header: 'Categoria', cell: (element: any) => `${element.categoria.nome}` },
     { columnDef: 'acao', header: 'Ações' },
   ];
 

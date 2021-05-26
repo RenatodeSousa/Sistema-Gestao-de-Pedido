@@ -127,7 +127,7 @@ export class BaseResourceService<T extends BaseResourceModel> {
     const formData = new FormData();
     formData.append('file', file);
     this.http.post(`${this.apiPath}/picture`, formData)
-      .subscribe(res => console.log(res));
+      .subscribe(res => console.log('rerererreer'+ res));
   }
 
 

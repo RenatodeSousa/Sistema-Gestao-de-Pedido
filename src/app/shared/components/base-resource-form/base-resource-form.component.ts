@@ -214,7 +214,6 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
   onFileChange(event) {
-    console.log('chegouu');
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
       console.log('evento' + event.target.files[0].name);

@@ -22,7 +22,7 @@
   <ng-container matColumnDef="id" >
     <th   *matHeaderCellDef mat-sort-header> ID </th>
     <td mat-cell *matCellDef="let element"> {{element.id}}
-      <img src="{{bucketUrl}}/cat{{element.id}}.jpg" style="height: 50px; width:50px">
+      <img src="{{bucketUrl}}/prod{{element.id}}.jpg" style="height: 50px; width:50px">
     </td>
 
   </ng-container>
@@ -37,6 +37,11 @@
   <ng-container matColumnDef="descricao" >
     <th  *matHeaderCellDef mat-sort-header> Descrição </th>
     <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="categoria" >
+    <th  *matHeaderCellDef mat-sort-header> Categoria </th>
+    <td mat-cell *matCellDef="let element"> {{element.categoria.nome}} </td>
   </ng-container>
 
   <ng-container matColumnDef="acao">
